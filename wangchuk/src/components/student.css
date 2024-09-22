@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Foldit:wght@100..900&family=Fugaz+One&family=Roboto+Slab:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    /* font-family: Baskerville;
+    font-weight: 1000;*/
+} 
+
+#root{
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 0;
+}
+
+.clock-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+    
+}
+
+.clock {
+    width: 100px;
+    height: 100px;
+    border: 8px solid #333;
+    border-radius: 50%;
+    position: relative;
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.faceclock {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform: translateY(-2px);
+}
+
+.hand {
+    width: 50%;
+    background: #333;
+    position: absolute;
+    top: 50%;
+    transform-origin: 100%;
+    transform: rotate(90deg);
+   
+}
+
+.bighand {
+    height: 4px;
+    transition: all 1s ease;
+}
+
+.smallhand {
+    height: 2px;
+    background: #e74c3c;
+    transition: all 0.5s ease;
+}
+
+.movinghand {
+    height: 1px;
+    background: #e74c3c;
+    transition: all 0.05s;
+    transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    
+}
+
+.number {
+    position: absolute;
+    font-size: 12px;
+    transform: translate(-50%, -50%);
+    color: #333;
+}
+
+.number1 { top: 11.03%; left: 72.5%; }
+.number2 { top: 27.5%; left: 88.97%; }
+.number3 { top: 50%; left: 95%; }
+.number4 { top: 72.5%; left: 88.97%; }
+.number5 { top: 88.97%; left: 72.5%; }
+.number6 { top: 95%; left: 50%; }
+.number7 { top: 88.97%; left: 27.5%; }
+.number8 { top: 72.5%; left: 11.03%; }
+.number9 { top: 50%; left: 5%; }
+.number10 { top: 27.5%; left: 11.03%; }
+.number11 { top: 11.03%; left: 27.5%; }
+.number12 { top: 5%; left: 50%; }
+
+.current-activities {
+    text-align: left;
+    margin: 0px 1pc;
+}
+
+.current-activities h2 {
+    font-size: 18px;
+    color: #333;
+}
+
+#id {
+    display: flex;
+    align-items: center;
+    padding: 22px 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.idlogo svg {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+}
+
+.idname .name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.idname .para {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Total section */
+.total-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+}
+
+.total, .total-attended {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.total h2, .total-attended h2 {
+    margin-bottom: 10px;
+}
+
+.text, .totalnumber {
+    text-align: center;
+}
+
+.chartss{
+    /* background-color: #2e0606; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center;*/
+    align-items: center; 
+    height: 1000px;
+} 
+
+/* pie chart section  */
+.container{
+    /* position: relative; */
+    width: 400px;
+    height: 400px;
+   
+}
+
+#piechart{
+    /* background-color: #666; */
+    /* position:absolute; */
+    cursor:grab;
+    margin: 25px 0;
+   
+}
+
+.barcontainer{
+    /* position: absolute; */
+    /* background-color: #600; */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; 
+    width: 540px;
+    height: 300px;
+    border: 1px solid #ccc;
+    margin: 130px 0px;
+}  
+
+.bar{
+    width: 10%;
+    background-color: #4CAF50;
+    text-align: center;
+    color: white;
+    transition: height 0.5s;
+}
+
+/* recent activity section  */
+
+.rechead{
+    text-align: center;
+    font-size: 6.5vw;
+    font-family: "Fugaz One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.recsec{
+    width: 100%;
+    /* text-align: center; */
+}
+
+.righth1{
+    font-size: medium;
+    text-align: right;
+
+}
+
+.common-sheet{
+    display: flex;
+    margin: 0.7vw;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 3px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.left{
+    width: 100%;
+    font-size:16px;
+}
+
+.right{
+    /* display: inline; */
+    margin: 2.5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.mainrec{
+    width: 95%;
+    margin: 0 2.5%;
+}
+
+.footer-dashboard{
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+/* .download img{
+    width: 10%;
+} */
+
+.download{
+    border: 1.5px solid black;
+    background-color: #4681f4;
+    font-size: 19px;
+    color: white;
+    width: 122px;
+    border-radius: 4px;
+}
+
+.download:hover {
+    background-color: #00b300;;
+    /* font-family: cursive; */
+    color:white;
+    width: 122px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download a{
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 2px 2px 2px black;
+}
+
+@media (max-width: 600px) {
+    .rechead{
+        font-size: 7.5vw;
+
+    }
+
+    .left{
+        font-size: 14px;
+    }
+
+    .total-section{
+        margin-top: 30px;
+    }
+    
+    .total,.total-attended{
+        margin: 15px;
+        height: 25vw;
+        width: 40vw;
+    }
+
+    .header{
+        height: 19%;
+    }
+
+    .barcontainer{
+        width: 90vw;
+    }
+
+    .container{
+        display: flex;
+        justify-content: center;
+
+    }
+    #piechart{
+        width: 70vw;
+        height: 70vw;
+        /* margin: 30px; */
+    }
+}

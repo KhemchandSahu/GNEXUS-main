@@ -1,0 +1,12 @@
+{
+    "class": "3rd sem cs",
+    "students": {
+      "12345": {
+        "name": "John Doe"
+      },
+      "67890": {
+        "name": "Jane Smith"
+      }
+    }
+}
+  

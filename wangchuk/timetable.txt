@@ -1,0 +1,515 @@
+Savita Sahu:{
+schedule:
+	"Monday":{
+	"10:30-11:30": "5th sem cs",
+	"11:30-12:30": "1st year pmps",
+	"12:30-1:30": "none",
+	"2:15-3:15":""3rd sem cs",
+	"3:15-5:15":"Lab 1st year"},
+	"Tuesday":{
+	"10:30-11:30":"Third Sem cs",
+	"11:30-12:30::null,
+	"12:30-1:30":null,
+	"2:15-3:15":"5th sem",
+	"3:15-5:15":"Lab 3rd sem cs" B1}
+	"Wednesday":{
+	"10:30-11:30":"5th sem cs",
+	"11:30-12:30":"3rd sem",
+	"12:30-1:30":"first year",
+	"2:15-3:15":null,
+	"3:15-5:15":Lab}
+	"Thursday":{
+	"10:30-11:30":"fifth sem cs",
+	"11:30-1:30":"lab 1st year",
+	"2:15-3:15":null,
+	"3:15-5:15":"third sem lab" b2,
+	Friday:{
+	"10:30-11:30":null,
+	11:30-12:30:null,
+	12:30-1:30: "Third sem cs",
+	2:15-3:15 : null,
+	3:15-5:15 : "First year lab",
+	Saturday:{
+	9:30-10:30 : "pmps first year",
+	10:30-1:30 : null
+	}
+}
+
+Sonia Wadhwa:{
+schedule:
+	Monday:{
+	10:30-11:30:null,
+	11:30-12:30: "Third semester",
+	12:30-1:30: "Seventh sem"
+	2:15-3:15: "1st year",
+	3:15-5:15:"Lab 3rd sem",
+	},
+	Tuesday:{
+	10:30-11:30: null,
+	11:30-12:30: first year,
+	12:30-1:30 : 7th sem,
+	2:15-3:15- null,
+	3:15-5:15: first year lab b1
+	},
+	Wednesday:{
+	10:30-11:30 : 3rd sem,
+	11:30-12:30 : null,
+	12:30-1:30 : 7th sem,
+	2:15-3:15 : null,
+	3:15-5:15 : lab 3rd sem b2 
+ 	}
+	thursday :{
+	10:30-11:30 - 1st year,
+	11:30-12:30 - 3rd sem,
+	12:30-1:30 - null,
+	2:15-3:15 - 7th sem,
+	3:15-5:15 - lab pmps 1st yr
+	}
+	friday:{
+	10:30-11:30 - null,
+	11:30-1:30 - 1st year,
+	2:15-5:30: null
+	}
+	saturday:{
+	9:30-10:30 - third semester,
+	10:30-11:30 - null,
+	11:30-1:30 - pmps
+	}
+}
+
+Vivek Singh Rathore :{
+schedule:{
+	Monday:{
+	10:30-11:30 : null,
+	11:30-12:30 : first sem,
+	12:30-1:30: null,
+	2:15-3:15 : fifth year,
+	3:15-5:15 : fifth year lab b1,
+	}
+	tuesday:{
+	10:30-11:30: first year,
+	11:30-1:30 - fifth lab b2,
+	2:15-3:15-null,
+	3:15-5:15 - null
+	},
+	wednesday:{
+	10:30-11:30: null,
+	11:30-12:30: null,
+	12:30-1:30 : null,
+	2:15-3:15 : 7th sem,
+	3:15-4:15: 5th sem,
+	}
+	thursday:{
+	10:30-11:30 : null,
+	11:30-12:30 : null,
+	12:30-1:30 : 7th sem,
+	2:15-3:15 - null,
+	3:15-5:15 - null,
+	},
+	friday{
+	10:30-11:30 : fifth sem,
+	11:30-12:30 : seventh sem,
+	12:30-1:30 : null,
+	2:15-5:15 - null
+	}
+	saturday{
+	9:30-10:30: null,
+	10:30-11:30: 7th sem,
+	12:30-1:30: 5th sem,
+	}
+}
+
+Prince Kumar Sahu:{
+schedule:[
+	monday:{
+	10:30-11:30 : null,
+	11:30-12:30 : 5th sem,
+	12:30:1:30 : 3rd sem,
+	2:15-3:15 : 7th sem,
+	3:15-5:15 - lab 7th sem b1,
+	}
+	tuesday:{
+	10:30-11:30 : null,
+	11:30-12:30 : null,
+	12:30-1:30 : 3rd sem,
+	2:15-3:15 : null,
+	3:15-5:15 : null
+	}
+	wednesday:{
+	10:30-11:30 : null,
+	11:30-12:30 : 7th sem,
+	12:30-1:30 : null,
+	2:15-3:15 : 5th sem,
+	3:15-5:15 : null
+	}
+	thursday:{
+	10:30-11:30 : 7th sem,
+	11:30-12:30 : 5th sem,
+	12:30-1:30  3rd sem,
+	2:15-3:15 - null,
+	3:15- 5:15 - lab 7th sem d2
+	}
+	friday:{
+	10:30-11:30 : null,
+	11:30-12:30 : 3rd sem,
+	12:30-1:30 : 7th sem,
+	2:15-3:15 - null,
+	3:15-5:15 - null,
+	}
+	sat:{
+	9:30-10:30 : null,
+	10:30-11:30 : null,
+	11:30-12:30 : 5th sem,
+	12:30-1:30 : null
+	}
+}
+
+Vishnu verma :{
+schedule: [
+	monday:{
+	10:30-11:30: null,
+	11:30-12:30 : 7th sem,
+	12:30-1:30: 5th sem,
+	2:15-3:15 : null,
+	3:15-5:15 : lab b2 third sem,
+	}
+	tuesday:{
+	10:30-11:30 : 5th sem,
+	11:30-12:30 : 3rd sem,
+	12:30-1:30: null,
+	2:15-3:15 : 3rd sem,
+	3:15-5:15 : null
+	},
+	wed:{
+	10:30-11:30 : 7th sem,
+	11:30-12:30 : 5th sem,
+	12:30-1:30 : null,
+	2:15-3:15 : 3rd sem,
+	3:15-5:15 - 3rd sem lab b1,
+	}
+	thursday:{
+	10:11:30 : null,
+	11:30-12:30 : 7 th sem,
+	12:30-1:30 : null,
+	2:15-3:15 : 5th sem,
+	3:15-5:15 : 7 th sem lab b1,
+	}
+	friday:{
+	10:30-11:30 : 7th sem,
+	11:30-1:30 : 5th sem lab b2,
+	2:15-3:15 : null,
+	3:15-5:15 - 7th lab b2,
+	}
+	sat:{
+	9:30-10:30: null,
+	10:30-11:30 : null,
+	11:30-12:30 : 3rd sem,
+	12:30-1:30 : null,
+	}
+}
+
+Aastha Tripathi:{
+schedule: [
+	monday:{
+	10:30-11:30 : 7th sem,
+	11:30-3:15 : null,
+	3:15-5:15 : 7th sem b2,
+	}
+	tuesday:{
+	10:30-11:30 - 7th sem,
+	11:30-1:30 - 5th sem lab b1,
+	2:15-3:15 - null,
+	3:15-5:15 - 3rd sem b2
+	}
+	wednesday:{ 
+	10:30:5:30 : null
+	}
+	thursday:{
+	10:30-3:15 : null,
+	3:15-5:15 : 3rd sem b1
+	}
+	friday:{
+	10:30-11:30 - null,
+	11:30-1:30 - 5th sem b1,
+	2:15-3:15 - 7th sem,
+	3:15-5:15 - 7th sem b1
+	}
+	saturday:{
+	9:30-10:30 : null,
+	10:30-11:30 - 7th sem,
+	11:30-1:30 - null
+	}
+}
+
+
+
+
+
+
+																	ITTTT
+Hemlata Bhar:{
+schedule: {
+	monday:{
+	10:30-11:30 : null,
+	11:30-12:30 : null,
+	12:30-1:30 : 3rd sem it,
+	2:15-3:15 : null,
+	3:15-5:15 : null
+	}
+	tuesday:{
+	10:30-11:30 : null,
+	11:30-12:30: null,
+	12:1:30: 3rd sem it,
+	2:15-3:15 : null,
+	3:15-5:15 : null
+	}
+	wednesday:{
+	10:30-11:30 : null,
+	11:30-12:30: null,
+	12:1:30: null,
+	2:15-3:15 : null,
+	3:15-5:15 : null
+	}
+	thursday:{
+	10:30-11:30 : null,
+	11:30-12:30: null,
+	12:1:30: null,
+	2:15-3:15 : null,
+	3:15-5:15 : null
+	}
+	friday:{
+	10:30-11:30 : null,
+	11:30-12:30: null,
+	12:1:30: 3rd sem it,
+	2:15-3:15 : null,
+	3:15-5:15 : null
+	},
+	saturday:{
+	9:30:10:30 : null,
+	10:30:11:30 : null,
+	11:30:12:30 : 3rd sem it,
+	12:30-1:30 : null
+	}
+}
+
+Samiksha Shukla:{
+schedule: {
+	monday:{
+	10:30 : 11:30 : null,
+	11:30 : 12:30 : 5th sem,
+	12:30 : 1:30 : 7th sem,
+	2:15 : 3:15 : null,
+	3:15 : 5:15 - 3rd sem lab b2   
+	}
+	tuesday:{
+	10:30:11:30 : null,
+	11:30:12:30 : 3rd sem,
+	12:30 : 1:30 : null,
+	2:15-3:15 : fifth sem,
+	3:15-5:15 : lab 5th sem b1,
+	}
+	wednesday:{
+	10:30:11:30 : 7th sem,
+	11:30-12:30 : null,
+	12:30-1:30 : null,
+	2:15-3:15 : 3rd sem,
+	3:15-5:15 : 3rd sem lab b1,
+	}
+	thursday:{
+	10:30-11:30: 5th semester,
+	11:30-12:30 : 7th sem,
+	12:30-1:30 : 3rd sem,
+	2:15-3:15 : null,
+	3:15-5:15 : 5th sem lab b2,
+	}
+	friday:{
+	10:30-11:30 : 3rd sem,
+	11:30-12:30 : 5th sem,
+	12:30-1:30 : null,
+	2:15-3:15 : 7th sem,
+	3:15-5:15 : null
+	}
+	saturday:{
+	9:30-10:30 : null,
+	10:30-11:30 : null,
+	12:30-1:30 : null,
+	}
+}
+
+Kunal kumar:{
+schedule: {
+	monday:{
+	10:30 : 11:30 : 7th sem,
+	11:30 : 12:30 : 3rd sem,
+	12:30-1:30 : null,
+	2:15-3:15 - 5th sem,
+	3:15-5:15 : 5th sem lab b1,
+	}
+	tuesday:{
+	10:30-11:30 : 5th sem,
+	11:30-12:30 : null,
+	12:30:1:30 : null,
+	2:15-3:15 : 3rd sem,
+	3:15-5:15 : 3rd sem lab b1,
+	}
+	wednesday :{
+	10:30-11:30 : null,
+	11:30-12:30 : 7th sem,
+	12:30-1:30 :  5th sem,
+	2:15-3:15 : null,
+	3:15-5:15 : 5th sem, lab b2,
+	}
+	thursday:{
+	10:30-11:30 : 3rd sem,
+	11:30-12:30 : null,
+	12:30-1:30: null,
+	2:15-3:15 : 7th sem,
+	3:15-5:15 : 3r sem lab b2,
+	}
+	friday:{
+	10:30-11:30 : null,
+	11:30-12:30 : 3rd sem,
+	12:30-1:30 : null,
+	2:15-3:15 : 5th sem,
+	3:15-5:15 : null,
+	}
+	sat:{
+	9:30-10:30 : null,
+	10:30-11:30 : null,
+	11:30-12:30 : null, 
+	12:30-1:30 : null
+	}
+}
+
+Priyanka Sahu:{
+schedule : {
+	monday:{
+	10:30:11:30 : null,
+	11:30:12:30 : 7th sem,
+	12:30:1:30 : null,
+	2:15-3:15 : 3rd sem,
+	3:15-5:15 : 3rd sem lab b1
+	}
+	tuesday:{
+	10:30:11:30 : 3rd sem,
+	11:30:12:30 : 7th sem,
+	12:30-1:30 :5th sem,
+	2:15-3:15 : null,
+	3:15-5:15: null,
+	}
+	wednesday :{
+	10:30: 11:30 : null,
+	11:30:12:30 : 5th sem,
+	12:30 : 1:30 : null,
+	2:15-3:15 : 7th sem,
+	3:15-5:15 : 3rd sem lab b2,
+	}
+	thursday: {
+	10:30:11:30 : 7th sem,
+	11:30:12:30: 3rd sem,
+	12:30:1:30 : null,
+	2:15:3:15 : null,
+	3:15:5:15 : 7th sem lab b2
+	}
+	friday:{
+	10:30:12:30 : 7th sem lab b1,
+	12:30:1:30 : 5th sem,
+	2:15-3:15 : 3rd sem,
+	3:15:5:15 : null
+	}
+	sat:{
+	9:30-10:30 : null,
+	10:30: 11:30 : 5th sem,
+	11:30 -12:30 : null,
+	12:30:1:30 - null
+	}
+}
+
+himanshu mokakshe:{
+schedule : {
+	monday: {
+	10:30:11:30 :null,
+	11:30-12:30 : null,
+	12:30:1:30 : 5th sem,
+	2:15-3:15 : 7th sem,
+	3:15-5:15 : 7th sem lab b1
+	}
+	tuesday{
+	10:30:11:30 : 7th sem,
+	11:30:12:30 : 5th sem,
+	12:30 : 1:30 : 7th sem,
+	2:15 -3:15 : 7th sem,
+	3:15-5:15 : 5th sem lab b2
+	}
+	wednesday:{
+	10:30:11:30 : 5th sem,
+	11:30:12:30 : null,
+	12:30:1:30 : 7th sem,
+	2:15:3:15 : null,
+	3:15:5:15 : null
+	},
+	thursday:[
+	10:30:11:30: null,
+	11:30:12:30: null,
+	12:30:1:30 : 7th sem,
+	2:15:3:15 : 5th sem,
+	3:15: 5:15 : 5tbh sem lab b1
+	}  	
+  	friday:{
+	10:30 : 12:30 : 7th sem lab b2,
+	12:30:1:30 : 7th sem,
+	2:15:3:15 : null,
+	3:15:5:15 : null,
+	}
+	saturday:{
+	9:30 : 10:30 : null,
+	10:30: 11:30 : null,
+	11:30 : 12:30 : null,
+	12:30:1:30 : null,
+	}
+}
+
+Dr. Sudha tiwari:{
+schedule:{
+	monday: {
+	10:30 : 11:30 : 3rd sem,
+	11:30 : 12:30 :null,
+	12:30 : 1:30 : null,
+	2:15 : 3:15 : null,
+	3:15 : 5:15 : null
+	}
+	tuesday:{
+	10:30:11:30 : null,
+	11:30:12:30 : null,
+	12:30:1:30 : null,
+	2:15 : 3:15 : null,
+	3:15 : 5:15n : 3rd sem lab b2,
+	}
+	wednesday:{
+	10:30: 11:30 : null,
+	11:30 : 12:30 : null,
+	12:30 : 1:30 : 3rd sem,
+	2:15 : 3:15 : null,
+	3:15-5:15 : null,
+	}
+	thursday:{
+	10:30 : 11:30 - null,
+	11:30 : 12:30 -null,
+	12:30 : 1:30 - null,
+	2:15 : 3:15 : 3rd sem,
+	3:15 : 5:15 : 3rd sem lab b1,
+	}
+	friday:{
+	 10:30 : 11:30 - null,
+	11:30 : 12:30 -null,
+	12:30 : 1:30 - null,
+	2:15 : 3:15 : null,
+	3:15 : 5:15 : null,
+	}
+	saturday:{
+	9:30:10:30 : null,
+	10:30:11:30 : 3rd sem,
+	11:30: 12:30 : null,
+	12:30 : 1:30 : null
+	}
+}
