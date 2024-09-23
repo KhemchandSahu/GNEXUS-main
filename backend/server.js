@@ -21,7 +21,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB connection
-mongoose.connect("mongodb+srv://creatordiv:divya_131203@gecbook.lgqzy.mongodb.net/", {
+mongoose.connect("mongodb+srv://creatordiv:divya_131203@gecbook.lgqzy.mongodb.net/test", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected')).catch(err => console.log(err));
