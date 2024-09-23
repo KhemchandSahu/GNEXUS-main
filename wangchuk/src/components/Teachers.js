@@ -10,7 +10,7 @@ import { faChevronLeft, faChevronRight, faTimes } from '@fortawesome/free-solid-
 import axios from 'axios';
 import { getDatabase, ref, set, onValue, get} from "firebase/database";
 // import Timetable from '../../../backend/models/Timetable';
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://gcnexus.onrender.com/api';
 const Teachers = () => {
     const [isSidebarVisible, setIsSidebarVisible] = useState(false);
     const [isAttendanceBarVisible, setIsAttendanceBarVisible] = useState(true);
@@ -74,7 +74,7 @@ const Teachers = () => {
 
             const fetchData = async () => {
                 try{
-                    const response = await axios.get(`http://localhost:5000/timetable/${userName}/${dayName}`)
+                    const response = await axios.get(`https://gcnexus.onrender.com/api/timetable/${userName}/${dayName}`)
                     console.log(`API response:`, response.data);
                 }catch(error){
                     console.error('Error fetching the data', error);
@@ -190,7 +190,7 @@ const Teachers = () => {
                 const dayName = new Intl.DateTimeFormat('en-US', {weekday: 'long'}).format(date);
                 const user = JSON.parse(localStorage.getItem('user'));
                 const username = user.name
-                const response = await axios.get(`http://localhost:5000/timetable/${username}/${dayName}`);
+                const response = await axios.get(`https://gcnexus.onrender.com/api/timetable/${username}/${dayName}`);
                 console.log('responce url is', response);
                 console.log('Fetched data:', response.data);
     
@@ -314,7 +314,7 @@ const Teachers = () => {
     const fetchStudents = async (deptname) => {
         setLoading(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/${deptname}`);
+            const response = await fetch(`https://gcnexus.onrender.com/api/${deptname}`);
             const data = await response.json();
             setStudents(data);
             setLoading(false);
@@ -375,9 +375,9 @@ const Teachers = () => {
 
         try{
             console.log("Inside the ty of fetching the dates");
-            const url = `http://localhost:5000/api/attendance/dates/${userName}`;
+            const url = `https://gcnexus.onrender.com/api/attendance/dates/${userName}`;
             console.log(url);
-            const response = await axios.get(`http://localhost:5000/api/attendance/dates/${userName}`)
+            const response = await axios.get(`https://gcnexus.onrender.com/api/attendance/dates/${userName}`)
             console.log(response.data);
             setUpdateDates(response.data)
         }catch(error){
@@ -413,7 +413,7 @@ const Teachers = () => {
         console.log('Presence confirmed:', students);
 
         try{
-            await axios.post(`http://localhost:5000/api/attendance/submit/${userName}`, {
+            await axios.post(`https://gcnexus.onrender.com/api/attendance/submit/${userName}`, {
                 attendance: students.map(student => ({
                   name: student.name,
                   isPresent: student.isPresent
@@ -432,7 +432,7 @@ const Teachers = () => {
 
     const fetchDocuments = async (date) => {
         try{
-            const response = await axios.get(`http://localhost:5000/api/attendance/documents/${userName}/${date}`);
+            const response = await axios.get(`https://gcnexus.onrender.com/api/attendance/documents/${userName}/${date}`);
             console.log(response)
             console.log(response.data)
             setDocuments(response.data)
@@ -444,7 +444,7 @@ const Teachers = () => {
     // Handle attendance update 
     const handleUpdate = async ()=>{
         try{
-            await axios.put(`http://localhost:5000/api/attendance/update/${userName}/${selectedDocument}`, {
+            await axios.put(`https://gcnexus.onrender.com/api/attendance/update/${userName}/${selectedDocument}`, {
                 students: students.map(student => ({
                     name :student.name,
                     isPresent: student.isPresent
@@ -466,7 +466,7 @@ const Teachers = () => {
 
     const handleDownload = async () => {
         try{
-            const response = await axios.get(`http://localhost:5000/api/attendance/download/${userName}`, {
+            const response = await axios.get(`https://gcnexus.onrender.com/api/attendance/download/${userName}`, {
                 response:'blob'
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -494,7 +494,7 @@ const Teachers = () => {
         formData.append('file', file);
 
         try{
-            axios.post(`http://localhost:5000/api/attendance/upload/${userName}`, formData, {
+            axios.post(`https://gcnexus.onrender.com/api/attendance/upload/${userName}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
