@@ -55,9 +55,6 @@ router.get('/timetable/:username/:day', async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send('Server error');
-  }finally{
-    mongoose.disconnect();
-    console.log("Data fetched and disconnected");
   }
 });
 
