@@ -11,10 +11,6 @@ router.route('/').get(async (req, res) => {
     res.json(users);
   } catch (err) {
     res.status(400).json('Error: ' + err);
-  } finally {
-    mongoose.connection.close(() => {
-      console.log('MongoDB connection closed after API call');
-    });
   }
 });
 
@@ -28,10 +24,6 @@ router.route('/add').post(async (req, res) => {
     res.json('User added!');
   } catch (err) {
     res.status(400).json('Error: ' + err);
-  } finally {
-    mongoose.connection.close(() => {
-      console.log('MongoDB connection closed after API call');
-    });
   }
 });
 

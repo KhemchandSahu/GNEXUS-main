@@ -584,6 +584,11 @@ tbody{
   
 }
 
+.inputatt{
+  height: 2vw;
+  width: 2vw;
+}
+
 .profile-icon{
   height: 250px;
   display:flex;
@@ -751,7 +756,11 @@ bi-arrow-left{
   /* .header{
      height: 30vw; 
   } */
-
+  #root{
+    width: 100%;
+    position: absolute;
+    bottom: 6px;
+  }
   #sidebar{
     width: 100vw;
   }
@@ -774,7 +783,12 @@ bi-arrow-left{
     width: 50vw;
     height: 10vw ;
     font-size: 2.7vw;
-   }
+  }
+
+  .inputatt{
+    width: 5vw;
+    height: 10vw;
+  }
 
    
   .nextbut,.prevbut{
@@ -799,6 +813,11 @@ bi-arrow-left{
   .header2{
       border-top-left-radius: 20px;
       border-top-right-radius: 20px;
+  }
+
+  .inputatt{
+    height: 10vw;
+    width: 5vw;
   }
 }
 
@@ -1060,5 +1079,10 @@ input .inputatt{
 @media(min-width:600){
   #attendance-bar{
     width: 600px;
+  }
+
+  .inputatt{
+    height: 5vw;
+    width: 4vw;
   }
 }
