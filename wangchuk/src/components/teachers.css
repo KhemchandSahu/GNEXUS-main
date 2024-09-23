@@ -759,7 +759,11 @@ bi-arrow-left{
   #root{
     width: 100%;
     position: absolute;
-    bottom: 6px;
+    bottom: 0px;
+  }
+
+  .bodymain{
+    height: 100vh;
   }
   #sidebar{
     width: 100vw;
