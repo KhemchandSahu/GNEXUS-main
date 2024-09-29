@@ -301,22 +301,18 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     }
 
     const headers = ['Name'];
-    const dateEntries = new Set(); // Use a Set to ensure unique dates
     const studentsMap = new Map();
 
     // Iterate through all attendance records
     allAttendance.forEach((record) => {
       const date = record.date;
 
-      // Add date to the unique set of dates
-      dateEntries.add(date);
-
       record.students.forEach((student) => {
         if (!studentsMap.has(student.name)) {
           studentsMap.set(student.name, {}); // Store attendance by date for each student
         }
 
-        // If the date already exists, append the entry, otherwise create a new one
+        // If the date already exists, increment the entry number
         if (!studentsMap.get(student.name)[date]) {
           studentsMap.get(student.name)[date] = [];
         }
@@ -325,33 +321,30 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
       });
     });
 
-    // Convert Set to Array for headers
-    const dates = Array.from(dateEntries);
-    headers.push(...dates, 'Total Classes', 'Classes Attended', 'Classes Absent', 'Percentage of Attendance');
+    const dateEntries = Array.from(studentsMap.values()).flatMap(attendance =>
+      Object.keys(attendance)
+    );
+
+    // Create dynamic headers for attendance entries
+    const uniqueDates = [...new Set(dateEntries)];
+    uniqueDates.forEach(date => {
+      const entryCount = Math.max(...Array.from(studentsMap.values()).map(attendance => (attendance[date] || []).length));
+      for (let i = 1; i <= entryCount; i++) {
+        headers.push(`${date}_${i}`); // Add separate columns for each entry
+      }
+    });
 
     const csvData = [];
     studentsMap.forEach((attendance, name) => {
       const row = { Name: name };
-      let totalClasses = dates.length;
-      let attendedClasses = 0;
 
-      // Fill in attendance data for each date
-      dates.forEach((date) => {
+      uniqueDates.forEach(date => {
         const entries = attendance[date] || [];
-        // If there are entries for the date, mark 'P' for present and 'A' for absent
-        if (entries.length > 0) {
-          row[date] = entries.map(entry => entry ? 'P' : 'A').join(', '); // Join multiple entries
-          attendedClasses += entries.filter(entry => entry).length; // Count only the true entries
-        } else {
-          row[date] = 'A'; // Default to absent if no entry exists
-        }
+        // Fill in attendance data for the date
+        entries.forEach((entry, index) => {
+          row[`${date}_${index + 1}`] = entry ? 'P' : 'A'; // Mark 'P' or 'A'
+        });
       });
-
-      const percentage = ((attendedClasses / totalClasses) * 100).toFixed(2);
-      row['Total Classes'] = totalClasses;
-      row['Classes Attended'] = attendedClasses;
-      row['Classes Absent'] = totalClasses - attendedClasses;
-      row['Percentage of Attendance'] = `${percentage}`;
 
       csvData.push(row);
     });
