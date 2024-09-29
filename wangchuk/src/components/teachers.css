@@ -756,21 +756,21 @@ bi-arrow-left{
   /* .header{
      height: 30vw; 
   } */
-  #root{
+  /* #root{
     width: 100%;
     position: absolute;
     bottom: 0px;
-  }
+  } */
 
   .bodymain{
     height: 100vh;
   }
+
   #sidebar{
     width: 100vw;
   }
 
   .current-activities{
-
     display: none;
   }
 
@@ -799,7 +799,7 @@ bi-arrow-left{
     width: 20vw;
   }
 
-   .clock{
+  .clock{
     width: 85px;
     height: 85px;
     border: 6px solid #333;

@@ -43,6 +43,7 @@ const Teachers = () => {
     const [selectedDocument, setSelectedDocument] = useState('');
     const [dates, setDates] = useState([]);
     const [name, setName] = useState('');
+    const [selectedattDate, setselectedattDate] = useState('');
 
 
     const ScheduleComponent = () => {
@@ -362,10 +363,15 @@ const Teachers = () => {
             // Fetch students based on the activity
             const year = document.getElementById("yearentry").value;
             const branch = document.getElementById("branchentry").value;
+            const selectedDate = document.getElementById("dateentry").value;
 
+            if(!selectedDate){
+                alert("Please select a date");
+                return;
+            }
             // Fetch students based on the selected branch
             console.log(`Fetching students for ${branch} in semester ${year}`);
-            fetchStudents(branch);
+            fetchStudents(branch, year, selectedDate);
         } else {
             console.log("Attendance bar is not defined");
         }
@@ -414,6 +420,7 @@ const Teachers = () => {
 
         try{
             await axios.post(`https://gcnexus.onrender.com/api/attendance/submit/${userName}`, {
+                date: setselectedattDate,
                 attendance: students.map(student => ({
                   name: student.name,
                   isPresent: student.isPresent
@@ -616,7 +623,10 @@ const Teachers = () => {
                                 <option value="ET&T">ET&t</option>
                                 <option value="Civil">Civil</option> */}
                             </select>
+                            
 
+                            <label htmlFor='date' className='sememsterdatelabel'>Select Date</label>
+                            <input type="date" id='dateentry' className='date-picker' />
                             <button id="submit" onClick={afterformSelect}>Select</button>
                         </div>
                     </div>
@@ -696,6 +706,8 @@ const Teachers = () => {
                     </div>
                     <div className="requests">
                         <div className="request-header">
+                            <h2>Select the date of which attendance is to be recorded.</h2>
+                            <input type='date' value={setselectedattDate} onChange={(e) => setselectedattDate(e.target.value)} />
                             <h2>Select their name to mark their presence</h2>
                         </div>
                         <div className="request-list">

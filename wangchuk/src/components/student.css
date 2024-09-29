@@ -302,7 +302,7 @@ body {
     text-decoration: none;
     text-shadow: 2px 2px 2px black;
 }
-
+/* 
 @media (max-width: 600px) {
     .rechead{
         font-size: 7.5vw;
@@ -339,6 +339,6 @@ body {
     #piechart{
         width: 70vw;
         height: 70vw;
-        /* margin: 30px; */
-    }
-}
+        /* margin: 30px; 
+    } 
+} */
