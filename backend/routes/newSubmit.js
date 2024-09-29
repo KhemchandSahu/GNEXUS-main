@@ -384,7 +384,6 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
 });
 
 
-
 // // Fetching the unique dates 
 router.get('/attendance/dates/:teacherName', async(req,res) => {
   const { teacherName } = req.params;
