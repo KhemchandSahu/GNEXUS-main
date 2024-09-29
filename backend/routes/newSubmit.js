@@ -316,6 +316,7 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
           studentsMap.get(student.name)[date] = [];
         }
 
+        // Push the attendance record (true/false) into the array
         studentsMap.get(student.name)[date].push(student.isPresent);
       });
     });
@@ -327,7 +328,7 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     uniqueDates.forEach(date => {
       const entryCount = Math.max(...Array.from(studentsMap.values()).map(attendance => (attendance[date] || []).length));
       for (let i = 1; i <= entryCount; i++) {
-        headers.push(`${date}_${i}`);
+        headers.push(`${date}_${i}`); // Create headers for each attendance entry
       }
     });
 
@@ -347,15 +348,21 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
           totalClasses++; // Count each entry as a class
           if (entry) attendedClasses++; // Count attended classes
         });
+
+        // If no entries exist for the date, mark as absent
+        if (entries.length === 0) {
+          row[`${date}_1`] = 'A'; // Mark as absent if no records for the date
+          totalClasses++; // Still count this as a class for the date
+        }
       });
 
       // Calculate totals
       row['Total Classes'] = totalClasses; // Total classes now counts all entries
-      row['Classes Attended'] = attendedClasses;
-      row['Classes Absent'] = totalClasses - attendedClasses;
-      row['Percentage of Attendance'] = ((attendedClasses / totalClasses) * 100).toFixed(2); // Calculate percentage
+      row['Classes Attended'] = attendedClasses; // Total attended classes
+      row['Classes Absent'] = totalClasses - attendedClasses; // Calculate absent classes
+      row['Percentage of Attendance'] = totalClasses > 0 ? ((attendedClasses / totalClasses) * 100).toFixed(2) : '0.00'; // Calculate percentage
 
-      csvData.push(row);
+      csvData.push(row); // Add row to CSV data
     });
 
     const csvString = parse(csvData, { fields: headers });
@@ -368,6 +375,7 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     res.status(500).json({ message: 'Server error' });
   }
 });
+
 
 
 // // Fetching the unique dates 
