@@ -290,69 +290,99 @@ router.post('/attendance/download/:teacherName', async (req, res) => {
 });
 
 router.get('/attendance/download/:teacherName', async (req, res) => {
-  const {teacherName} = req.params;
+  const { teacherName } = req.params;
   const Attendance = getAttendanceModel(teacherName);
+  console.log("Attedence route updated one is working")
 
-  try{
+  try {
     const allAttendance = await Attendance.find({});
 
-    if(!allAttendance.length){
-      return res.status(404).json({ message:'No attendance records found'});
+    if (!allAttendance.length) {
+      return res.status(404).json({ message: 'No attendance records found' });
     }
 
     const headers = ['Name'];
-    const dates = allAttendance.map((record) => record.date);
-    headers.push(...dates, 'Total Classes', 'Classes Attended','Classes Absent', 'Percentage of Attendance');
-
-
+    const dateOccurrences = {}; // To keep track of how many times each date appears
     const studentsMap = new Map();
+
+    // Collect all attendance records
     allAttendance.forEach((record) => {
       record.students.forEach((student) => {
-        if(!studentsMap.has(student.name)){
+        if (!studentsMap.has(student.name)) {
           studentsMap.set(student.name, []);
         }
+        
         studentsMap.get(student.name).push({
           date: record.date,
           isPresent: student.isPresent,
         });
+
+        // Track occurrences of each date
+        if (!dateOccurrences[record.date]) {
+          dateOccurrences[record.date] = 1;
+        } else {
+          dateOccurrences[record.date]++;
+        }
       });
     });
 
-    const csvData = [];
-    studentsMap.forEach((attendances, name) =>{
-      const row = {Name : name };
-      let totalClasses = dates.length;
-      let attendedClasses =0;
+    // Create headers for the CSV
+    Object.keys(dateOccurrences).forEach((date) => {
+      for (let i = 1; i <= dateOccurrences[date]; i++) {
+        headers.push(`${date} (${i})`);
+      }
+    });
 
-      dates.forEach((date) => {
-        const attendanceRecord = attendances.find((a) => a.date === date);
-        if(attendanceRecord && attendanceRecord.isPresent) {
-          row[date] = 'P';
+    headers.push('Total Classes', 'Classes Attended', 'Classes Absent', 'Percentage of Attendance');
+
+    // Generate CSV data
+    const csvData = [];
+    studentsMap.forEach((attendances, name) => {
+      const row = { Name: name };
+      let totalClasses = attendances.length;
+      let attendedClasses = 0;
+
+      // Sort attendances by date to keep the order correct
+      attendances.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+      // Handle multiple entries for the same date
+      const dateCountMap = {};
+
+      attendances.forEach((attendance) => {
+        if (!dateCountMap[attendance.date]) {
+          dateCountMap[attendance.date] = 1;
+        } else {
+          dateCountMap[attendance.date]++;
+        }
+
+        const columnHeader = `${attendance.date} (${dateCountMap[attendance.date]})`;
+        row[columnHeader] = attendance.isPresent ? 'P' : 'A';
+        if (attendance.isPresent) {
           attendedClasses++;
-        }else{
-          row[date] = 'A';
         }
       });
 
-      const percentage = ((attendedClasses/totalClasses)*100).toFixed(2);
+      const percentage = ((attendedClasses / totalClasses) * 100).toFixed(2);
       row['Total Classes'] = totalClasses;
       row['Classes Attended'] = attendedClasses;
       row['Classes Absent'] = totalClasses - attendedClasses;
       row['Percentage of Attendance'] = `${percentage}`;
 
       csvData.push(row);
-    })
+    });
 
     const csvString = parse(csvData, { fields: headers });
 
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=attendance.csv');
     res.status(200).send(csvString);
-  }catch(error){
-    console.error('Error genrating csv', error);
-    res.status(500).json({ message : 'Server error'});
+  } catch (error) {
+    console.error('Error generating CSV', error);
+    res.status(500).json({ message: 'Server error' });
   }
+
 });
+
 
 
 // // Fetching the unique dates 
