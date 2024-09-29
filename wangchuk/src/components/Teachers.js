@@ -363,15 +363,10 @@ const Teachers = () => {
             // Fetch students based on the activity
             const year = document.getElementById("yearentry").value;
             const branch = document.getElementById("branchentry").value;
-            const selectedDate = document.getElementById("dateentry").value;
 
-            if(!selectedDate){
-                alert("Please select a date");
-                return;
-            }
             // Fetch students based on the selected branch
             console.log(`Fetching students for ${branch} in semester ${year}`);
-            fetchStudents(branch, year, selectedDate);
+            fetchStudents(branch);
         } else {
             console.log("Attendance bar is not defined");
         }
@@ -623,10 +618,7 @@ const Teachers = () => {
                                 <option value="ET&T">ET&t</option>
                                 <option value="Civil">Civil</option> */}
                             </select>
-                            
-
-                            <label htmlFor='date' className='sememsterdatelabel'>Select Date</label>
-                            <input type="date" id='dateentry' className='date-picker' />
+                                    
                             <button id="submit" onClick={afterformSelect}>Select</button>
                         </div>
                     </div>
