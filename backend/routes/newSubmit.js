@@ -337,19 +337,20 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     const csvData = [];
     studentsMap.forEach((attendance, name) => {
       const row = { Name: name };
-      let totalClasses = uniqueDates.length;
+      let totalClasses = 0; // Change to count each entry
       let attendedClasses = 0;
 
       uniqueDates.forEach(date => {
         const entries = attendance[date] || [];
         entries.forEach((entry, index) => {
           row[`${date}_${index + 1}`] = entry ? 'P' : 'A'; // Mark 'P' or 'A'
+          totalClasses++; // Count each entry as a class
           if (entry) attendedClasses++; // Count attended classes
         });
       });
 
       // Calculate totals
-      row['Total Classes'] = totalClasses;
+      row['Total Classes'] = totalClasses; // Total classes now counts all entries
       row['Classes Attended'] = attendedClasses;
       row['Classes Absent'] = totalClasses - attendedClasses;
       row['Percentage of Attendance'] = ((attendedClasses / totalClasses) * 100).toFixed(2); // Calculate percentage
