@@ -611,7 +611,7 @@ const Teachers = () => {
                             <select className="branch" id="branchentry">
                                 <option value="it">IT</option>
                                 <option value="cs">CSE</option>
-                                <option value="both">CSE&IT</option>
+                                {/* <option value="both">CSE&IT</option> */}
                                 {/* <option value="Mech">Mechanical</option>
                                 <option value="Mining">Mining</option>
                                 <option value="Metallurgy">Electrical</option>
