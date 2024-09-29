@@ -294,8 +294,10 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
   const Attendance = getAttendanceModel(teacherName);
 
   try {
+    // Fetch attendance data without modifying it
     const allAttendance = await Attendance.find({});
 
+    // Handle no attendance case
     if (!allAttendance.length) {
       return res.status(404).json({ message: 'No attendance records found' });
     }
@@ -303,7 +305,7 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     const headers = ['Name'];
     const studentsMap = new Map();
 
-    // Collect attendance data
+    // Collect attendance data from database (No writes or updates here)
     allAttendance.forEach((record) => {
       const date = record.date;
 
@@ -321,10 +323,10 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
       });
     });
 
-    // Determine unique dates
+    // Determine unique dates from attendance records
     const uniqueDates = Array.from(new Set(allAttendance.map(record => record.date)));
 
-    // Create dynamic headers for attendance entries
+    // Create dynamic headers for attendance entries based on the number of records
     uniqueDates.forEach(date => {
       const entryCount = Math.max(...Array.from(studentsMap.values()).map(attendance => (attendance[date] || []).length));
       for (let i = 1; i <= entryCount; i++) {
@@ -335,12 +337,14 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     // Add total columns to headers
     headers.push('Total Classes', 'Classes Attended', 'Classes Absent', 'Percentage of Attendance');
 
+    // Prepare CSV data for each student
     const csvData = [];
     studentsMap.forEach((attendance, name) => {
       const row = { Name: name };
-      let totalClasses = 0; // Change to count each entry
+      let totalClasses = 0;
       let attendedClasses = 0;
 
+      // Process each date and count classes
       uniqueDates.forEach(date => {
         const entries = attendance[date] || [];
         entries.forEach((entry, index) => {
@@ -349,27 +353,30 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
           if (entry) attendedClasses++; // Count attended classes
         });
 
-        // If no entries exist for the date, mark as absent
+        // Mark as absent if no entries exist for the date
         if (entries.length === 0) {
-          row[`${date}_1`] = 'A'; // Mark as absent if no records for the date
-          totalClasses++; // Still count this as a class for the date
+          row[`${date}_1`] = 'A'; // Mark as absent
+          totalClasses++; // Count this as a class for the date
         }
       });
 
-      // Calculate totals
-      row['Total Classes'] = totalClasses; // Total classes now counts all entries
-      row['Classes Attended'] = attendedClasses; // Total attended classes
-      row['Classes Absent'] = totalClasses - attendedClasses; // Calculate absent classes
-      row['Percentage of Attendance'] = totalClasses > 0 ? ((attendedClasses / totalClasses) * 100).toFixed(2) : '0.00'; // Calculate percentage
+      // Calculate totals for each student
+      row['Total Classes'] = totalClasses;
+      row['Classes Attended'] = attendedClasses;
+      row['Classes Absent'] = totalClasses - attendedClasses;
+      row['Percentage of Attendance'] = totalClasses > 0 ? ((attendedClasses / totalClasses) * 100).toFixed(2) : '0.00';
 
       csvData.push(row); // Add row to CSV data
     });
 
+    // Generate the CSV file from data
     const csvString = parse(csvData, { fields: headers });
 
+    // Send the CSV file as a response
     res.setHeader('Content-Type', 'text/csv');
     res.setHeader('Content-Disposition', 'attachment; filename=attendance.csv');
     res.status(200).send(csvString);
+
   } catch (error) {
     console.error('Error generating csv', error);
     res.status(500).json({ message: 'Server error' });
