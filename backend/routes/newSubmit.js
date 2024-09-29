@@ -335,7 +335,7 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     });
 
     // Add total columns to headers
-    headers.push('Total Classes', 'Classes Attended', 'Classes Absent', 'Percentage of Attendance');
+    headers.push('Total Classes', 'Present', 'Absent', 'Percentage');
 
     // Prepare CSV data for each student
     const csvData = [];
@@ -362,9 +362,9 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
 
       // Calculate totals for each student
       row['Total Classes'] = totalClasses;
-      row['Classes Attended'] = attendedClasses;
-      row['Classes Absent'] = totalClasses - attendedClasses;
-      row['Percentage of Attendance'] = totalClasses > 0 ? ((attendedClasses / totalClasses) * 100).toFixed(2) : '0.00';
+      row['Present'] = attendedClasses;
+      row['Absent'] = totalClasses - attendedClasses;
+      row['Percentage'] = totalClasses > 0 ? ((attendedClasses / totalClasses) * 100).toFixed(2) : '0.00';
 
       csvData.push(row); // Add row to CSV data
     });
