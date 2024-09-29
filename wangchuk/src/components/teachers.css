@@ -514,6 +514,7 @@ tbody{
 
 .footer-dashboard{
   width: 100%;
+  position: fixed;
   text-align: center;
   background-color: black;
   color: white;
@@ -1079,7 +1080,7 @@ input .inputatt{
   top:1000px;
   display:none;
 }
-
+/* 
 @media(min-width:600){
   #attendance-bar{
     width: 600px;
@@ -1089,4 +1090,4 @@ input .inputatt{
     height:30px;
     width:30px;
   }
-}
+} */
