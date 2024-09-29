@@ -292,7 +292,6 @@ router.post('/attendance/download/:teacherName', async (req, res) => {
 router.get('/attendance/download/:teacherName', async (req, res) => {
   const { teacherName } = req.params;
   const Attendance = getAttendanceModel(teacherName);
-  console.log("Attedence route updated one is working")
 
   try {
     const allAttendance = await Attendance.find({});
@@ -302,63 +301,44 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     }
 
     const headers = ['Name'];
-    const dateOccurrences = {}; // To keep track of how many times each date appears
+    const dateEntries = new Set(); // Use a Set to ensure unique dates
     const studentsMap = new Map();
 
-    // Collect all attendance records
+    // Iterate through all attendance records
     allAttendance.forEach((record) => {
+      const date = record.date;
+
+      // Add date to the unique set of dates
+      dateEntries.add(date);
+
       record.students.forEach((student) => {
         if (!studentsMap.has(student.name)) {
-          studentsMap.set(student.name, []);
+          studentsMap.set(student.name, new Map()); // Use a Map for students to keep track of dates
         }
-        
-        studentsMap.get(student.name).push({
-          date: record.date,
-          isPresent: student.isPresent,
-        });
 
-        // Track occurrences of each date
-        if (!dateOccurrences[record.date]) {
-          dateOccurrences[record.date] = 1;
-        } else {
-          dateOccurrences[record.date]++;
-        }
+        // Store the attendance for each student by date
+        studentsMap.get(student.name).set(date, student.isPresent);
       });
     });
 
-    // Create headers for the CSV
-    Object.keys(dateOccurrences).forEach((date) => {
-      for (let i = 1; i <= dateOccurrences[date]; i++) {
-        headers.push(`${date} (${i})`);
-      }
-    });
+    // Convert Set to Array for headers
+    const dates = Array.from(dateEntries);
+    headers.push(...dates, 'Total Classes', 'Classes Attended', 'Classes Absent', 'Percentage of Attendance');
 
-    headers.push('Total Classes', 'Classes Attended', 'Classes Absent', 'Percentage of Attendance');
-
-    // Generate CSV data
     const csvData = [];
-    studentsMap.forEach((attendances, name) => {
+    studentsMap.forEach((attendance, name) => {
       const row = { Name: name };
-      let totalClasses = attendances.length;
+      let totalClasses = dates.length;
       let attendedClasses = 0;
 
-      // Sort attendances by date to keep the order correct
-      attendances.sort((a, b) => new Date(a.date) - new Date(b.date));
-
-      // Handle multiple entries for the same date
-      const dateCountMap = {};
-
-      attendances.forEach((attendance) => {
-        if (!dateCountMap[attendance.date]) {
-          dateCountMap[attendance.date] = 1;
+      // Fill in attendance data for each date
+      dates.forEach((date) => {
+        const isPresent = attendance.get(date);
+        if (isPresent !== undefined) {
+          row[date] = isPresent ? 'P' : 'A'; // 'P' for present, 'A' for absent
+          if (isPresent) attendedClasses++;
         } else {
-          dateCountMap[attendance.date]++;
-        }
-
-        const columnHeader = `${attendance.date} (${dateCountMap[attendance.date]})`;
-        row[columnHeader] = attendance.isPresent ? 'P' : 'A';
-        if (attendance.isPresent) {
-          attendedClasses++;
+          row[date] = 'A'; // Default to absent if no entry exists
         }
       });
 
@@ -377,12 +357,10 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
     res.setHeader('Content-Disposition', 'attachment; filename=attendance.csv');
     res.status(200).send(csvString);
   } catch (error) {
-    console.error('Error generating CSV', error);
+    console.error('Error generating csv', error);
     res.status(500).json({ message: 'Server error' });
   }
-
 });
-
 
 
 // // Fetching the unique dates 
