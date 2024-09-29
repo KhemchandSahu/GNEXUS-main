@@ -38,7 +38,7 @@ router.post('/attendance/submit/:teacherName', upload.single('file'), async (req
   const Attendance = getAttendanceModel(teacherName);
 
   try {
-    const today = selectedattDate ? new Date().toISOString().split('T')[0]
+    const today = selectedattDate ? new Date(selectedattDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0];
 
     if (req.file) {
       // Handle CSV file upload and update
