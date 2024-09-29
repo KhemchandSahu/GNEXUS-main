@@ -29,7 +29,7 @@ const getAttendanceModel = (teacherName) =>
 
 router.post('/attendance/submit/:teacherName', upload.single('file'), async (req, res) => {
   const { teacherName } = req.params;
-  const { attendance } = req.body;
+  const { attendance, selectedattDate } = req.body;
 
   // const today = new Date().toISOString().split('T')[0]; // Already used for the date
   const currentTime = new Date().toLocaleTimeString(); // Capture the current time
@@ -38,7 +38,7 @@ router.post('/attendance/submit/:teacherName', upload.single('file'), async (req
   const Attendance = getAttendanceModel(teacherName);
 
   try {
-    const today = new Date().toISOString().split('T')[0];
+    const today = selectedattDate ? new Date().toISOString().split('T')[0];
 
     if (req.file) {
       // Handle CSV file upload and update
