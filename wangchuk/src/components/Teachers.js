@@ -419,7 +419,7 @@ const Teachers = () => {
                   name: student.name,
                   isPresent: student.isPresent
                 })),
-                selectedattDate: selectedDate
+                selectedattDate: selectedattDate
             })
             alert('Data confirmed and processed!')
         }catch(error){
