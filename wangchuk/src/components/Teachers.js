@@ -699,7 +699,7 @@ const Teachers = () => {
                     <div className="requests">
                         <div className="request-header">
                             <h2>Select the date of which attendance is to be recorded.</h2>
-                            <input type='date' value={setselectedattDate} onChange={(e) => setselectedattDate(e.target.value)} />
+                            <input type='date' value={selectedattDate} onChange={(e) => setselectedattDate(e.target.value)} />
                             <h2>Select their name to mark their presence</h2>
                         </div>
                         <div className="request-list">
