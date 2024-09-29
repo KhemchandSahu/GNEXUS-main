@@ -313,11 +313,15 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
 
       record.students.forEach((student) => {
         if (!studentsMap.has(student.name)) {
-          studentsMap.set(student.name, new Map()); // Use a Map for students to keep track of dates
+          studentsMap.set(student.name, {}); // Store attendance by date for each student
         }
 
-        // Store the attendance for each student by date
-        studentsMap.get(student.name).set(date, student.isPresent);
+        // If the date already exists, append the entry, otherwise create a new one
+        if (!studentsMap.get(student.name)[date]) {
+          studentsMap.get(student.name)[date] = [];
+        }
+
+        studentsMap.get(student.name)[date].push(student.isPresent); // Store attendance as an array
       });
     });
 
@@ -333,10 +337,11 @@ router.get('/attendance/download/:teacherName', async (req, res) => {
 
       // Fill in attendance data for each date
       dates.forEach((date) => {
-        const isPresent = attendance.get(date);
-        if (isPresent !== undefined) {
-          row[date] = isPresent ? 'P' : 'A'; // 'P' for present, 'A' for absent
-          if (isPresent) attendedClasses++;
+        const entries = attendance[date] || [];
+        // If there are entries for the date, mark 'P' for present and 'A' for absent
+        if (entries.length > 0) {
+          row[date] = entries.map(entry => entry ? 'P' : 'A').join(', '); // Join multiple entries
+          attendedClasses += entries.filter(entry => entry).length; // Count only the true entries
         } else {
           row[date] = 'A'; // Default to absent if no entry exists
         }
