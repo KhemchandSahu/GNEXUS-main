@@ -114,15 +114,15 @@ router.post('/attendance/submit/:teacherName', upload.single('file'), async (req
         // Add total classes, attended classes, and attendance percentage
         const percentage = ((attendedClasses / totalClasses) * 100).toFixed(2);
         row['Total Classes'] = totalClasses;
-        row['Classes Attended'] = attendedClasses;
-        row['Classes Absent'] = totalClasses - attendedClasses;
-        row['Percentage of Attendance'] = `${percentage}%`;
+        row['Present'] = attendedClasses;
+        row['Absent'] = totalClasses - attendedClasses;
+        row['Percentage'] = `${percentage}%`;
 
         csvData.push(row);
       });
 
       // Convert JSON data to CSV
-      const csvFilePath = path.join(__dirname, 'attendance.csv');
+      const csvFilePath = path.join(__dirname, `attendance${today}.csv`);
       const csvString = parse(csvData, { fields: headers });
 
       // Write the CSV file
