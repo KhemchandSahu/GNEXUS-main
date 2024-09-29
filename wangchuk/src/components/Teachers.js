@@ -415,11 +415,11 @@ const Teachers = () => {
 
         try{
             await axios.post(`https://gcnexus.onrender.com/api/attendance/submit/${userName}`, {
-                date: selectedDate,
                 attendance: students.map(student => ({
                   name: student.name,
                   isPresent: student.isPresent
-                }))
+                })),
+                selectedattDate: selectedDate
             })
             alert('Data confirmed and processed!')
         }catch(error){
