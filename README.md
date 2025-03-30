@@ -1,2 +1,2 @@
 # gnexus
-For fun
+the main repo
